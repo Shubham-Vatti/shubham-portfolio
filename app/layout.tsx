@@ -12,7 +12,6 @@ const geist = Geist({
 export const metadata: Metadata = {
   title: "Shubham Kumar - Full Stack Developer",
   description: "Full Stack mobile app developer with 4 years of experience.",
-  generator: "v0.app",
 };
 
 export default function RootLayout({
