@@ -3,7 +3,6 @@
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { LinkPreview } from "@/components/ui/link-preview";
-import { el } from "date-fns/locale";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
@@ -372,6 +371,7 @@ export default function Home() {
                 <article
                   key={index}
                   className="group p-6 sm:p-8 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-500 hover:shadow-lg cursor-pointer relative"
+                  onClick={() => window.open(post.url)}
                 >
                   <GlowingEffect
                     spread={40}
