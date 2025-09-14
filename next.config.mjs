@@ -12,6 +12,10 @@ const nextConfig = {
       "api.microlink.io", // Microlink Image Preview
     ],
   },
+  // server: {
+  //   host: '0.0.0.0'
+  // },
+  // allowedDevOrigins: ['local-origin.dev', '*.local-origin.dev'],
 }
 
 export default nextConfig
