@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { GlowingEffect } from "@/components/ui/glowing-effect";
-import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
-import { LinkPreview } from "@/components/ui/link-preview";
-import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { GlowingEffect } from '@/components/ui/glowing-effect';
+import { HoverBorderGradient } from '@/components/ui/hover-border-gradient';
+import { LinkPreview } from '@/components/ui/link-preview';
+import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Home() {
   const [isDark, setIsDark] = useState(true);
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState('');
   const sectionsRef = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDark);
+    document.documentElement.classList.toggle('dark', isDark);
   }, [isDark]);
 
   useEffect(() => {
@@ -20,12 +20,12 @@ export default function Home() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in-up");
+            entry.target.classList.add('animate-fade-in-up');
             setActiveSection(entry.target.id);
           }
         });
       },
-      { threshold: 0.3, rootMargin: "0px 0px -20% 0px" }
+      { threshold: 0.3, rootMargin: '0px 0px -20% 0px' },
     );
 
     sectionsRef.current.forEach((section) => {
@@ -56,25 +56,20 @@ export default function Home() {
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        <path
-          d="M10 50H56"
-          stroke="currentColor"
-          strokeWidth="5"
-          strokeLinecap="round"
-        />
+        <path d="M10 50H56" stroke="currentColor" strokeWidth="5" strokeLinecap="round" />
       </svg>
     );
   };
 
   const handleDownloadresume = () => {
     // Replace with your Google Drive file ID.   https://drive.google.com/file/d//view?usp=sharing
-    const fileId = "1liOxpJK4ya2otSBvu7p9mZRSBV-opJbl";
+    const fileId = '1K4IyF-Zt7DpnVNhAcZFC3vFmjvUJNi0N';
     const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
 
     // Create a temporary anchor tag to trigger download
-    const link = document.createElement("a");
+    const link = document.createElement('a');
     link.href = downloadUrl;
-    link.setAttribute("download", "resume.pdf"); // File name for download
+    link.setAttribute('download', 'resume.pdf'); // File name for download
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -84,18 +79,16 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground relative">
       <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-10 hidden lg:block">
         <div className="flex flex-col gap-4">
-          {["intro", "work", "thoughts", "connect"].map((section) => (
+          {['intro', 'work', 'thoughts', 'connect'].map((section) => (
             <button
               key={section}
               onClick={() =>
-                document
-                  .getElementById(section)
-                  ?.scrollIntoView({ behavior: "smooth" })
+                document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' })
               }
               className={`w-2 h-8 rounded-full transition-all duration-500 ${
                 activeSection === section
-                  ? "bg-foreground"
-                  : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
+                  ? 'bg-foreground'
+                  : 'bg-muted-foreground/30 hover:bg-muted-foreground/60'
               }`}
               aria-label={`Navigate to ${section}`}
             />
@@ -126,12 +119,10 @@ export default function Home() {
 
               <div className="space-y-6 max-w-md">
                 <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                  Full-stack developer building seamless mobile and backend
-                  experiences with{" "}
+                  Full-stack developer building seamless mobile and backend experiences with{' '}
                   <span className="text-foreground"> React Native</span>,
-                  <span className="text-foreground"> Node.js</span>, and{" "}
-                  <span className="text-foreground"> four years</span> of
-                  expertise.
+                  <span className="text-foreground"> Node.js</span>, and{' '}
+                  <span className="text-foreground"> four years</span> of expertise.
                 </p>
 
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-sm text-muted-foreground">
@@ -164,40 +155,34 @@ export default function Home() {
 
             <div className="lg:col-span-2 flex flex-col justify-end space-y-6 sm:space-y-8 mt-8 lg:mt-0">
               <div className="space-y-4">
-                <div className="text-sm text-muted-foreground font-mono">
-                  CURRENTLY
-                </div>
+                <div className="text-sm text-muted-foreground font-mono">CURRENTLY</div>
                 <div className="space-y-2">
                   <div className="text-foreground">Full Stack Developer</div>
-                  <LinkPreview
-                    url="https://www.nic.gov.in/"
+                  <div
+                    // url="https://www.nic.gov.in/"
                     className="text-muted-foreground hover:text-white cursor-pointer"
                   >
                     {/* <div
                     ></div> */}
-                    @ National Informatics Centre
-                  </LinkPreview>
-
-                  <div className="text-xs text-muted-foreground">
-                    Feb 2025 — Present
+                    @ Garuda Vega Associates
                   </div>
+
+                  <div className="text-xs text-muted-foreground">Aug 2025 — Present</div>
                 </div>
               </div>
 
               <div className="space-y-4">
-                <div className="text-sm text-muted-foreground font-mono">
-                  SKILLS
-                </div>
+                <div className="text-sm text-muted-foreground font-mono">SKILLS</div>
                 <div className="flex flex-wrap gap-2">
                   {[
-                    "React Native",
-                    "React.js",
-                    "TypeScript",
-                    "JavaScript",
-                    "Node.js",
-                    "Express.js",
-                    "Angular.js",
-                    "Ionic Framework",
+                    'React Native',
+                    'React.js',
+                    'TypeScript',
+                    'JavaScript',
+                    'Node.js',
+                    'Express.js',
+                    'Angular.js',
+                    'Ionic Framework',
                   ].map((skill) => (
                     <span
                       key={skill}
@@ -217,75 +202,86 @@ export default function Home() {
           ref={(el) => {
             sectionsRef.current[1] = el;
           }}
-          className="min-h-screen py-20 sm:py-32 opacity-0"
+          className="min-h-screen py-20 sm:py-32"
         >
           <div className="space-y-12 sm:space-y-16">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-              <h2 className="text-3xl sm:text-4xl font-light">
-                Work Experience
-              </h2>
+              <h2 className="text-3xl sm:text-4xl font-light">Work Experience</h2>
             </div>
 
             <div className="space-y-2 sm:space-y-12">
               {[
                 {
-                  year: "Jan 2022 - May 2022",
-                  role: "React Native Developer Intern",
-                  company: "Kandid Technologies",
+                  year: 'Jan 2022 - May 2022',
+                  role: 'React Native Developer Intern',
+                  company: 'Kandid Technologies',
                   description: [
-                    "Developed responsive mobile app UI with full functionality during internship.",
+                    'Developed responsive mobile app UI with full functionality during internship.',
                     // "Implemented key features for Maharashtra's specific agricultural needs and users.",
-                    "Engineered responsive components ensuring seamless performance across all devices.",
-                    "Collaborated to deliver a user-centric app for the local farming community.",
+                    'Engineered responsive components ensuring seamless performance across all devices.',
+                    'Collaborated to deliver a user-centric app for the local farming community.',
                   ],
-                  tech: ["React Native", "JavaScript", "TypeScript"],
-                  url: "https://kandid.in/",
+                  tech: ['React Native', 'JavaScript', 'TypeScript'],
+                  url: 'https://kandid.in/',
                 },
                 {
-                  year: "Jul 2022 - Jan 2023",
-                  role: "React Native Developer Intern",
-                  company: "Perspicientia Consultancy Private Limited",
+                  year: 'Jul 2022 - Jan 2023',
+                  role: 'React Native Developer Intern',
+                  company: 'Perspicientia Consultancy Private Limited',
                   description: [
-                    "Developed a fully functional, responsive mobile application UI.",
+                    'Developed a fully functional, responsive mobile application UI.',
                     // "Engineered core warranty claim processing and management features.",
-                    "Built a pixel-perfect, user-friendly interface for YPP Australia.",
-                    "Ensured application performance and responsiveness across all devices.",
+                    'Built a pixel-perfect, user-friendly interface for YPP Australia.',
+                    'Ensured application performance and responsiveness across all devices.',
                   ],
-                  tech: ["React Native", "JavaScript", "TypeScript"],
-                  url: "https://pcpl.io/",
+                  tech: ['React Native', 'JavaScript', 'TypeScript'],
+                  url: 'https://pcpl.io/',
                 },
                 {
-                  year: "Jan 2023 - Feb 2025",
-                  role: "Full Stack Mobile App Developer",
-                  company: "Perspicientia Consultancy Private Limited",
+                  year: 'Jan 2023 - Feb 2025',
+                  role: 'Full Stack Mobile App Developer',
+                  company: 'Perspicientia Consultancy Private Limited',
                   description: [
-                    "Developed full-stack mobile applications with responsive UI.",
-                    "Built and deployed six diverse apps to playstore and app store.",
-                    "Created user, vendor, and admin panel applications.",
+                    'Developed full-stack mobile applications with responsive UI.',
+                    'Built and deployed six diverse apps to playstore and app store.',
+                    'Created user, vendor, and admin panel applications.',
                     // "Engineered complete functionality for finance and health applications.",
                   ],
                   tech: [
-                    "React Native",
-                    "TypeScript",
-                    "React",
-                    "JavaScript",
-                    "Node.js",
-                    "Express.js",
+                    'React Native',
+                    'TypeScript',
+                    'React',
+                    'JavaScript',
+                    'Node.js',
+                    'Express.js',
                   ],
-                  url: "https://pcpl.io/",
+                  url: 'https://pcpl.io/',
                 },
                 {
-                  year: "Feb 2025 - current",
-                  role: "Full Stack Mobile App Developer",
-                  company: "NIC - ( Forest Management Information System )",
+                  year: 'Feb 2025 - current',
+                  role: 'Full Stack Mobile App Developer',
+                  company: 'NIC - ( Forest Management Information System )',
                   description: [
-                    "Developed a complete functional mobile app UI with Ionic Framework.",
-                    "Engineered a secure backend REST API using Express.js.",
-                    "Built a responsive cross-platform application for mobile and web.",
+                    'Developed a complete functional mobile app UI with Ionic Framework.',
+                    'Engineered a secure backend REST API using Express.js.',
+                    'Built a responsive cross-platform application for mobile and web.',
                     // "Created Forest Protection App an online crime reporting application for citizens.",
                   ],
-                  tech: ["React", "Node.js", "MySQL"],
-                  url: "https://www.nic.gov.in/",
+                  tech: ['React', 'Node.js', 'MySQL'],
+                  url: 'https://www.nic.gov.in/',
+                },
+                {
+                  year: 'Aug 2025 - current',
+                  role: 'Full Stack developer',
+                  company: 'Garuda Vegas Associates',
+                  description: [
+                    'Developed complete functional mobile app UIs using React Native for iOS and Android.',
+                    'Engineered secure REST APIs with Express.js for mobile and web clients.',
+                    'Built a responsive cross-platform application for mobile and web.',
+                    // "Created Forest Protection App an online crime reporting application for citizens.",
+                  ],
+                  tech: ['React Native', 'Next.js', 'Node.js', 'MySQL'],
+                  url: '',
                 },
               ].map((job, index) => (
                 <div
@@ -300,9 +296,7 @@ export default function Home() {
 
                   <div className="lg:col-span-6 space-y-3">
                     <div>
-                      <h3 className="text-lg sm:text-xl font-medium">
-                        {job.role}
-                      </h3>
+                      <h3 className="text-lg sm:text-xl font-medium">{job.role}</h3>
                       <LinkPreview url={job.url} className="cursor-pointer">
                         {job.company}
                       </LinkPreview>
@@ -343,35 +337,35 @@ export default function Home() {
             <div className="grid gap-6 sm:gap-8 lg:grid-cols-2">
               {[
                 {
-                  title: "Dash Drinks",
+                  title: 'Dash Drinks',
                   excerpt:
-                    "A React Native mobile app for convenient online browsing, ordering, and delivery of a wide variety of drinks and liquors.",
-                  date: "React Native",
+                    'A React Native mobile app for convenient online browsing, ordering, and delivery of a wide variety of drinks and liquors.',
+                  date: 'React Native',
                   // readTime: "6 min",
-                  url: "https://github.com/Shubham-Vatti/DashDrinks-Frontend",
+                  url: 'https://github.com/Shubham-Vatti/DashDrinks-Frontend',
                 },
                 {
-                  title: "ImmunizeBuddy",
+                  title: 'ImmunizeBuddy',
                   excerpt:
                     "A mobile app for parents to easily track and manage their baby's vaccination schedule, appointments, and health records.",
-                  date: "React Native",
+                  date: 'React Native',
                   // readTime: "4 min",÷
-                  url: "https://github.com/Shubham-Vatti/ImmunizeBuddy-Frontend",
+                  url: 'https://github.com/Shubham-Vatti/ImmunizeBuddy-Frontend',
                 },
                 {
-                  title: "Chhattisgarh Forest Protection App",
+                  title: 'Chhattisgarh Forest Protection App',
                   excerpt:
-                    "A mobile app for Chhattisgarh forest guards to instantly report crimes with GPS, photos, and real-time data for rapid response.",
-                  date: "Ionic Framework",
+                    'A mobile app for Chhattisgarh forest guards to instantly report crimes with GPS, photos, and real-time data for rapid response.',
+                  date: 'Ionic Framework',
                   // readTime: "5 min",
-                  url: "https://github.com/Shubham-Vatti/CG_FOREST_PROTECTION-ANGULAR",
+                  url: 'https://github.com/Shubham-Vatti/CG_FOREST_PROTECTION-ANGULAR',
                 },
                 {
-                  title: "Attorneys Info",
+                  title: 'Attorneys Info',
                   excerpt:
-                    "A website connecting USA clients with local attorneys by filtering specific city, state, and practice area for efficient legal matching.",
-                  date: "Next.js",
-                  url: "https://www.attorneys-info.com/",
+                    'A website connecting USA clients with local attorneys by filtering specific city, state, and practice area for efficient legal matching.',
+                  date: 'Next.js',
+                  url: 'https://www.attorneys-info.com/',
                 },
               ].map((post, index) => (
                 <article
@@ -396,9 +390,7 @@ export default function Home() {
                       {post.title}
                     </h3>
 
-                    <p className="text-muted-foreground leading-relaxed">
-                      {post.excerpt}
-                    </p>
+                    <p className="text-muted-foreground leading-relaxed">{post.excerpt}</p>
 
                     <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
                       <span>Read more</span>
@@ -436,8 +428,8 @@ export default function Home() {
 
               <div className="space-y-6">
                 <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                  Always interested in new opportunities, collaborations, and
-                  conversations about technology and design.
+                  Always interested in new opportunities, collaborations, and conversations about
+                  technology and design.
                 </p>
 
                 <div className="space-y-4">
@@ -445,9 +437,7 @@ export default function Home() {
                     href="mailto:shubhamvatti10@gmail.com"
                     className="group flex items-center gap-3 text-foreground hover:text-muted-foreground transition-colors duration-300"
                   >
-                    <span className="text-base sm:text-lg">
-                      shubhamvatti10@gmail.com
-                    </span>
+                    <span className="text-base sm:text-lg">shubhamvatti10@gmail.com</span>
                     <svg
                       className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
                       fill="none"
@@ -467,16 +457,14 @@ export default function Home() {
             </div>
 
             <div className="space-y-6 sm:space-y-8">
-              <div className="text-sm text-muted-foreground font-mono">
-                ELSEWHERE
-              </div>
+              <div className="text-sm text-muted-foreground font-mono">ELSEWHERE</div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   {
-                    name: "GitHub",
-                    handle: "@shubham-vatti",
-                    url: "https://github.com/Shubham-Vatti",
+                    name: 'GitHub',
+                    handle: '@shubham-vatti',
+                    url: 'https://github.com/Shubham-Vatti',
                   },
                   // { name: "v0.dev", handle: "@felixmacaspac", url: "#" },
                   // {
@@ -485,9 +473,9 @@ export default function Home() {
                   //   url: "#",
                   // },
                   {
-                    name: "LinkedIn",
-                    handle: "shubhamvatti",
-                    url: "https://www.linkedin.com/in/shubhamvatti/",
+                    name: 'LinkedIn',
+                    handle: 'shubhamvatti',
+                    url: 'https://www.linkedin.com/in/shubhamvatti/',
                   },
                 ].map((social) => (
                   <Link
@@ -499,9 +487,7 @@ export default function Home() {
                       <div className="text-foreground group-hover:text-muted-foreground transition-colors duration-300">
                         {social.name}
                       </div>
-                      <div className="text-sm text-muted-foreground">
-                        {social.handle}
-                      </div>
+                      <div className="text-sm text-muted-foreground">{social.handle}</div>
                     </div>
                   </Link>
                 ))}
